@@ -1,5 +1,7 @@
 package states;
 
+import utils.*;
+
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
@@ -13,6 +15,7 @@ import flixel.util.FlxMath;
 class GameOverState extends FlxState
 {
 	private var gameOverText:FlxText;
+	private var scoreText:FlxText;
 	private var restartText:FlxText;
 	/**
 	 * Function that is called up when to state is created to set it up. 
@@ -25,7 +28,10 @@ class GameOverState extends FlxState
 		gameOverText = new FlxText(FlxG.width / 2 - 170, FlxG.height / 2 - 25, 400, "GAME OVER", 50);
 		add(gameOverText);
 		
-		restartText = new FlxText(FlxG.width / 2 - 150, FlxG.height / 2 + 125, 400, "To restart press Enter", 20);
+		scoreText = new FlxText(FlxG.width / 2 - 150, FlxG.height / 2 + 125, 400, "You scored " + Reg.score + " Points", 20);
+		add(scoreText);
+		
+		restartText = new FlxText(FlxG.width / 2 - 150, FlxG.height / 2 + 165, 400, "To restart press Enter", 20);
 		add(restartText);
 		
 		super.create();
