@@ -63,7 +63,7 @@ class PlayerShip extends FlxSprite
 		//Shooting
 		if(FlxG.keyboard.pressed("SPACE") && shotTimer == 0)
 		{
-			FlxG.sound.play("assets/sounds/shot.wav");
+			FlxG.sound.play("assets/sounds/shot.wav", Reg.sfxVolume);
 			
 			shoot(0, -391);
 

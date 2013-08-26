@@ -41,6 +41,7 @@ class Enemy extends FlxSprite
 
 		if(hitPoints > 0) {
 			hitTimer = HIT_TIMEOUT;
+			FlxG.sound.play("assets/sounds/hit.wav", Reg.sfxVolume);
 		}
 		else {
 			Reg.score += scoreValue;

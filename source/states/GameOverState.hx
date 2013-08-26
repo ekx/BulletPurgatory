@@ -13,6 +13,7 @@ import flixel.util.FlxMath;
 class GameOverState extends FlxState
 {
 	private var gameOverText:FlxText;
+	private var restartText:FlxText;
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
@@ -20,12 +21,12 @@ class GameOverState extends FlxState
 	{
 		// Set a background color
 		FlxG.cameras.bgColor = 0xff131c1b;
-		#if !FLX_NO_MOUSE
-		FlxG.mouse.show();
-		#end
 		
 		gameOverText = new FlxText(FlxG.width / 2 - 170, FlxG.height / 2 - 25, 400, "GAME OVER", 50);
 		add(gameOverText);
+		
+		restartText = new FlxText(FlxG.width / 2 - 150, FlxG.height / 2 + 125, 400, "To restart press Enter", 20);
+		add(restartText);
 		
 		super.create();
 	}
@@ -45,5 +46,9 @@ class GameOverState extends FlxState
 	override public function update():Void
 	{
 		super.update();
+		
+		if(FlxG.keyboard.anyJustPressed(["ENTER"])) {
+			FlxG.switchState(new PlayState());
+		}
 	}	
 }

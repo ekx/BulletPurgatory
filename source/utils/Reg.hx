@@ -15,4 +15,7 @@ class Reg
 	static public function set_lives(value:Int):Int {_lives = value; hud.updateHUD(); return _lives;}
 	
 	static public var upgrades:Int = 0;
+	
+	static public var sfxVolume:Float = 1;
+	static public var musicVolume:Float = 1;
 }

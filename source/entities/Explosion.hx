@@ -1,5 +1,7 @@
 package entities;
 
+import utils.*;
+
 import flixel.*;
 
 class Explosion extends FlxSprite
@@ -20,7 +22,7 @@ class Explosion extends FlxSprite
 		super.reset(locX - width / 1.5 - 10, locY - height / 2);
 
 		play("explosion");
-		FlxG.sound.play("assets/sounds/explosion.wav");
+		FlxG.sound.play("assets/sounds/explosion.wav", Reg.sfxVolume);
 	}
 
 	override public function update():Void
