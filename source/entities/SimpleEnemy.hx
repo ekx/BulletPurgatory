@@ -5,6 +5,9 @@ import flixel.util.*;
 
 class SimpleEnemy extends Enemy
 {
+	private static var SHOOT_TIMER:Int = 50;
+	private var shootTimer:Int = 0;
+
 	public function new()
 	{
 		super();
@@ -23,5 +26,13 @@ class SimpleEnemy extends Enemy
 	override public function update():Void
 	{
 		super.update();
+
+		shootTimer++;
+
+		if(shootTimer == SHOOT_TIMER) {
+			shootTimer = 0;
+			shoot(150, 135);
+			shoot(150, 225);
+		}
 	}
 }

@@ -53,11 +53,18 @@ class Enemy extends FlxSprite
 		}
 	}
 
-	private function shoot(velX:Int, velY:Int):Void
+	private function shoot(speed:Int, direction:Int):Void
 	{
 		var bullet:FlxSprite = Recycler.getEnemyBullet();
-		bullet.reset(x + width/2 - bullet.width/2, y);
-		bullet.velocity.y = velY;
-		bullet.velocity.x = velX;
+		bullet.reset(x + width/2 - bullet.width/2, y + height/2 - bullet.height/2);
+		bullet.angle = direction;
+
+		bullet.velocity.y = speed * Math.cos(degToRad(180 - direction));
+		bullet.velocity.x = speed * Math.sin(degToRad(180 - direction));
+	}
+
+	private function degToRad(deg:Int):Float
+	{
+	    return Math.PI / 180 * deg;
 	}
 }

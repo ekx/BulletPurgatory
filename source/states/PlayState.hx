@@ -32,13 +32,13 @@ class PlayState extends FlxState
 		player = new PlayerShip();
 		add(player);
 
-		enemies = new FlxGroup();
-		add(enemies);
-
 		Recycler.init();
 		add(Recycler.playerBullets);
 		add(Recycler.enemyBullets);
 		add(Recycler.explosions);
+
+		enemies = new FlxGroup();
+		add(enemies);
 
 		Reg.hud = new HUD();
 		add(Reg.hud);
