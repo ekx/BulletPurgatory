@@ -1,5 +1,7 @@
 package ;
 
+import states.*;
+
 import flash.Lib;
 import flixel.*;
 	
