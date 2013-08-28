@@ -123,8 +123,10 @@ class PlayerShip extends FlxSprite
 
 		hitTimer = HIT_TIMEOUT;
 
-		var exp:Explosion = Recycler.getExplosion();
-		exp.reset(getMidpoint().x, getMidpoint().y);
+		Recycler.spawnExplosion(getMidpoint().x, getMidpoint().y);
+
+		if(Reg.upgrades > 0)
+			Reg.upgrades--;
 
 		if(Reg.lives > 0) {
 			Reg.lives--;

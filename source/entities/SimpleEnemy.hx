@@ -20,7 +20,7 @@ class SimpleEnemy extends Enemy
 		x = FlxRandom.intRanged(0, cast(FlxG.width - width, Int));
 		y = 0 - height;
 
-		velocity.y = 40;
+		velocity.y = 80;
 	}
 
 	override public function update():Void

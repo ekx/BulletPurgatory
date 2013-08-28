@@ -29,16 +29,17 @@ class PlayState extends FlxState
 		starField = new StarField();
 		add(starField);
 
-		player = new PlayerShip();
-		add(player);
-
 		Recycler.init();
+		add(Recycler.extraLives);
+		add(Recycler.upgrades);
 		add(Recycler.playerBullets);
 		add(Recycler.enemyBullets);
 		add(Recycler.explosions);
 
 		enemies = new FlxGroup();
 		add(enemies);
+		player = new PlayerShip();
+		add(player);		
 
 		Reg.hud = new HUD();
 		add(Reg.hud);
@@ -72,6 +73,8 @@ class PlayState extends FlxState
 
 		super.update();
 
+		FlxG.overlap(player, Recycler.extraLives, onLifePickup);
+		FlxG.overlap(player, Recycler.upgrades, onUpgradePickup);
 		FlxG.overlap(player, Recycler.enemyBullets, onPlayerHit);
 		FlxG.overlap(player, enemies, onCollide);
 		FlxG.overlap(enemies, Recycler.playerBullets, onEnemyHit);
@@ -95,5 +98,17 @@ class PlayState extends FlxState
 	{
 		bulletRef.kill();
 		enemyRef.hit();
+	}
+
+	private function onLifePickup(playerRef:PlayerShip, extraLifeRef:FlxSprite):Void
+	{
+		extraLifeRef.kill();
+		Reg.lives++;
+	}
+
+	private function onUpgradePickup(playerRef:PlayerShip, upgradeRef:FlxSprite):Void
+	{
+		upgradeRef.kill();
+		Reg.upgrades++;
 	}
 }

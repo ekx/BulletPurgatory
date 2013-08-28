@@ -14,6 +14,9 @@ class Enemy extends FlxSprite
 	private var hitPoints:Int = 1;
 	private var scoreValue:Int = 1;
 
+	private var hasExtraLife:Bool = false;
+	private var hasUpgrade:Bool = true;
+
 	public function new()
 	{
 		super();
@@ -46,8 +49,14 @@ class Enemy extends FlxSprite
 		else {
 			Reg.score += scoreValue;
 			
-			var exp:Explosion = Recycler.getExplosion();
-			exp.reset(getMidpoint().x, getMidpoint().y);
+			Recycler.spawnExplosion(getMidpoint().x, getMidpoint().y);
+
+			if(hasExtraLife) {
+				Recycler.spawnExtraLife(getMidpoint().x, getMidpoint().y);
+			}
+			if(hasUpgrade) {
+				Recycler.spawnUpgrade(getMidpoint().x, getMidpoint().y);
+			}
 
 			kill();
 		}
