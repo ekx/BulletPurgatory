@@ -12,7 +12,7 @@ class SimpleEnemy extends Enemy
 	{
 		super();
 
-		hitPoints = 1;
+		hitPoints = 2;
 		scoreValue = 50;
 		
 		loadGraphic("assets/images/simple_enemy.png");

@@ -8,7 +8,7 @@ import flixel.util.*;
 
 class Enemy extends FlxSprite
 {
-	private static var HIT_TIMEOUT:Int = 10;
+	private static var HIT_TIMEOUT:Int = 9;
 	private var hitTimer:Int = 0;
 
 	private var hitPoints:Int = 1;
