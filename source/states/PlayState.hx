@@ -104,11 +104,15 @@ class PlayState extends FlxState
 	{
 		extraLifeRef.kill();
 		Reg.lives++;
+
+		FlxG.sound.play("assets/sounds/extra-life.wav", Reg.sfxVolume);
 	}
 
 	private function onUpgradePickup(playerRef:PlayerShip, upgradeRef:FlxSprite):Void
 	{
 		upgradeRef.kill();
 		Reg.upgrades++;
+
+		FlxG.sound.play("assets/sounds/powerup.wav", Reg.sfxVolume);
 	}
 }

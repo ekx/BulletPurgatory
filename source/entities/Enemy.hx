@@ -15,7 +15,7 @@ class Enemy extends FlxSprite
 	private var scoreValue:Int = 1;
 
 	private var hasExtraLife:Bool = false;
-	private var hasUpgrade:Bool = true;
+	private var hasUpgrade:Bool = false;
 
 	public function new()
 	{

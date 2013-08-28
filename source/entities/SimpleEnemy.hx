@@ -21,6 +21,13 @@ class SimpleEnemy extends Enemy
 		y = 0 - height;
 
 		velocity.y = 80;
+
+		switch(FlxRandom.intRanged(0, 10)) {
+			case 9:
+				hasExtraLife = true;
+			case 10:
+				hasUpgrade = true;
+		}
 	}
 
 	override public function update():Void
