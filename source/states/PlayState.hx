@@ -50,6 +50,9 @@ class PlayState extends FlxState
 		
 		add(new Announcer("Wave 1"));
 
+		//FlxG.debugger.visible = true;
+		//FlxG.debugger.visualDebug = true;
+
 		super.create();
 	}
 	

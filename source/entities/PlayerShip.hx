@@ -21,6 +21,10 @@ class PlayerShip extends FlxSprite
 	public function new()
 	{
 		super(FlxG.width / 2 - 16, FlxG.height - 50, "assets/images/ship.png");
+		
+		width = 10;
+		height = 10;
+		centerOffsets();
 	}
 
 	override public function update():Void
