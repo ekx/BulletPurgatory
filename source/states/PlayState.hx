@@ -45,7 +45,10 @@ class PlayState extends FlxState
 
 		Reg.score = 0;
 		Reg.lives = 3;
+		Reg.upgrades = 0;
 		
+		add(new Announcer("Wave 1"));
+
 		super.create();
 	}
 	

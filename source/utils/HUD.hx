@@ -25,8 +25,18 @@ class HUD extends FlxGroup
 		add(livesCounter);
 
 		var temp:FlxSprite;
-		for(i in 0 ... Reg.lives) {
-			temp = new FlxSprite(32 * i, 0, "assets/images/ship.png");
+		
+		if(Reg.lives <= 3) {
+			for(i in 0 ... Reg.lives) {
+				temp = new FlxSprite(32 * i, 0, "assets/images/ship.png");
+				livesCounter.add(temp);
+			}
+		}
+		else {
+			var temp2:FlxText = new FlxText(0, 15, 40, Reg.lives + "X", 20);
+			livesCounter.add(temp2);
+
+			temp = new FlxSprite(35, 0, "assets/images/ship.png");
 			livesCounter.add(temp);
 		}
 
