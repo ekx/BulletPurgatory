@@ -1,18 +1,18 @@
 package entities;
 
+import utils.*;
+
 import flixel.*;
 import flixel.util.*;
 import flixel.group.*;
 
 class StarField extends FlxGroup
 {
-	private static var NUM_STARS:Int = 50;
-
 	public function new()
 	{
-		super(NUM_STARS);
+		super(Constants.STARS_NUM);
 
-		for(i in 0 ... NUM_STARS)
+		for(i in 0 ... Constants.STARS_NUM)
 			add(new Star());
 	}
 

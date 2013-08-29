@@ -1,17 +1,13 @@
 package entities;
 
+import utils.*;
+
 import flixel.*;
 import flixel.text.*;
 import flixel.group.*;
 
 class Announcer extends FlxGroup
 {
-	private static var BG_COLOR:Int = 0xCCFFFFFF;
-	private static var TEXT_COLOR:Int = 0xFF000000;
-	private static var FONT_SIZE:Int = 40;
-	private static var Y_POS:Int = 100;
-	private static var HEIGHT:Int = 100;
-
 	private var background:FlxSprite;
 	private var text:FlxText;
 
@@ -21,18 +17,18 @@ class Announcer extends FlxGroup
 	{
 		super();
 
-		background = new FlxSprite(0, -HEIGHT);
+		background = new FlxSprite(0, -Constants.ANNONCER_HEIGHT);
 		add(background);
 
-		background.makeGraphic(FlxG.width, HEIGHT, BG_COLOR);
+		background.makeGraphic(FlxG.width, Constants.ANNONCER_HEIGHT, Constants.ANNONCER_BG_COLOR);
 		background.velocity.y = 700;
 
-		text = new FlxText(-FlxG.width, Y_POS + (HEIGHT / 2 - FONT_SIZE / 2), FlxG.width, content, FONT_SIZE);
+		text = new FlxText(-FlxG.width, Constants.ANNONCER_Y_POS + (Constants.ANNONCER_HEIGHT / 2 - Constants.ANNONCER_FONT_SIZE / 2), FlxG.width, content, Constants.ANNONCER_FONT_SIZE);
 		add(text);
 
 		text.alignment = "center";
 		text.moves = true;
-		text.color = TEXT_COLOR;
+		text.color = Constants.ANNONCER_TEXT_COLOR;
 	}
 
 	override public function update():Void
@@ -40,11 +36,11 @@ class Announcer extends FlxGroup
 		super.update();
 
 		//Move background down
-		if(background.y < Y_POS && background.y > Y_POS - 60 && background.velocity.y > 20)
+		if(background.y < Constants.ANNONCER_Y_POS && background.y > Constants.ANNONCER_Y_POS - 60 && background.velocity.y > 20)
 			background.velocity.y -= background.velocity.y / 5;
 
 		//Stop background and start text movement
-		else if(background.y >= Y_POS && !startText) {
+		else if(background.y >= Constants.ANNONCER_Y_POS && !startText) {
 			background.velocity.y = 0;
 
 			startText = true;
@@ -67,11 +63,11 @@ class Announcer extends FlxGroup
 		}
 
 		//Move background up
-		else if(text.x >= FlxG.width && background.y > -HEIGHT)
+		else if(text.x >= FlxG.width && background.y > -Constants.ANNONCER_HEIGHT)
 			background.velocity.y += background.velocity.y / 5;
 
 		//Everything left the screen -> delete to free memory
-		else if(text.x >= FlxG.width && background.y <= -HEIGHT) {
+		else if(text.x >= FlxG.width && background.y <= -Constants.ANNONCER_HEIGHT) {
 			background.velocity.y = 0;
 
 			text.kill;

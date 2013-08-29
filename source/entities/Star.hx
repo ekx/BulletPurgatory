@@ -1,13 +1,13 @@
 package entities;
 
+import utils.*;
+
 import flash.Lib;
 import flixel.*;
 import flixel.util.*;
 
 class Star extends FlxSprite
 {
-	private static var SPEED:Float = 200.0; 
-
 	public function new()
 	{
 		super(-100, -100);
@@ -26,7 +26,7 @@ class Star extends FlxSprite
 
 		reset(x, y);
 
-		velocity.y = SPEED + FlxRandom.intRanged(0, 20);
+		velocity.y = Constants.STARS_SPEED + FlxRandom.intRanged(0, 20);
 	}
 
 	override public function update():Void

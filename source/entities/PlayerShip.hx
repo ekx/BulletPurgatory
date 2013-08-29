@@ -7,15 +7,7 @@ import flixel.*;
 
 class PlayerShip extends FlxSprite
 {
-	private static var HORIZONTAL_SPEED:Int = 300;
-	private static var VERTICAL_SPEED:Int = 200;
-
-	private static var PADDING:Int = 4;
-
-	private static var SHOT_TIMEOUT:Int = 10;
 	private var shotTimer:Int = 0;
-
-	private static var HIT_TIMEOUT:Int = 200;
 	private var hitTimer:Int = 0;
 	
 	private var controller:Controller;
@@ -38,34 +30,34 @@ class PlayerShip extends FlxSprite
 
 		//Horizontal movement
 		if(FlxG.keyboard.pressed("LEFT", "A") || controller.isLeftPressed()) {
-			velocity.x -= HORIZONTAL_SPEED;		
+			velocity.x -= Constants.PLAYER_HORIZONTAL_SPEED;		
 		}
 		else if(FlxG.keyboard.pressed("RIGHT", "D") || controller.isRightPressed()) {
-			velocity.x += HORIZONTAL_SPEED;		
+			velocity.x += Constants.PLAYER_HORIZONTAL_SPEED;		
 		}
 
 		//Vertical movement
 		if(FlxG.keyboard.pressed("UP", "W") || controller.isUpPressed()) {
-			velocity.y -= VERTICAL_SPEED;		
+			velocity.y -= Constants.PLAYER_VERTICAL_SPEED;		
 		}
 		else if(FlxG.keyboard.pressed("DOWN", "S") || controller.isDownPressed()) {
-			velocity.y += VERTICAL_SPEED;		
+			velocity.y += Constants.PLAYER_VERTICAL_SPEED;		
 		}
 
 		//Horizontal borders
-		if(x > FlxG.width - width - PADDING) {
-			x = FlxG.width - width - PADDING; 
+		if(x > FlxG.width - width - Constants.SCREEN_BOUNDARY_PADDING) {
+			x = FlxG.width - width - Constants.SCREEN_BOUNDARY_PADDING; 
 		}
-		else if(x < PADDING){
-			x = PADDING;					
+		else if(x < Constants.SCREEN_BOUNDARY_PADDING){
+			x = Constants.SCREEN_BOUNDARY_PADDING;					
 		}
 
 		//Vertical borders
-		if(y > FlxG.height - height - PADDING) {
-			y = FlxG.height - height - PADDING; 
+		if(y > FlxG.height - height - Constants.SCREEN_BOUNDARY_PADDING) {
+			y = FlxG.height - height - Constants.SCREEN_BOUNDARY_PADDING; 
 		}
-		else if(y < PADDING){
-			y = PADDING;					
+		else if(y < Constants.SCREEN_BOUNDARY_PADDING){
+			y = Constants.SCREEN_BOUNDARY_PADDING;					
 		}
 
 		//Shooting
@@ -100,7 +92,7 @@ class PlayerShip extends FlxSprite
 				shoot(100, -370);
 			}
 
-			shotTimer = SHOT_TIMEOUT;
+			shotTimer = Constants.PLAYER_SHOT_TIMEOUT;
 		}
 
 		if(shotTimer > 0)
@@ -129,7 +121,7 @@ class PlayerShip extends FlxSprite
 		if(hitTimer > 0)
 			return false;
 
-		hitTimer = HIT_TIMEOUT;
+		hitTimer = Constants.PLAYER_HIT_TIMEOUT;
 
 		Recycler.spawnExplosion(getMidpoint().x, getMidpoint().y);
 

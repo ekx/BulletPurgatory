@@ -1,11 +1,12 @@
 package entities;
 
+import utils.*;
+
 import flixel.*;
 import flixel.util.*;
 
 class SimpleEnemy extends Enemy
 {
-	private static var SHOOT_TIMER:Int = 50;
 	private var shootTimer:Int = 0;
 
 	public function new()
@@ -23,6 +24,8 @@ class SimpleEnemy extends Enemy
 		velocity.y = 80;
 
 		switch(FlxRandom.intRanged(0, 10)) {
+			case 8:
+				hasExtraBomb = true;
 			case 9:
 				hasExtraLife = true;
 			case 10:
@@ -36,7 +39,7 @@ class SimpleEnemy extends Enemy
 
 		shootTimer++;
 
-		if(shootTimer == SHOOT_TIMER) {
+		if(shootTimer == Constants.SIMPLE_ENEMY_SHOOT_TIMER) {
 			shootTimer = 0;
 			shoot(150, 135);
 			shoot(150, 225);

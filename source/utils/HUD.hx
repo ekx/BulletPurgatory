@@ -8,6 +8,7 @@ import flixel.text.*;
 class HUD extends FlxGroup
 {
 	private var livesCounter:FlxGroup;
+	private var bombsCounter:FlxGroup;
 	private var scoreCounter:FlxText;
 
 	public function new()
@@ -21,10 +22,10 @@ class HUD extends FlxGroup
 	{
 		clear();
 
-		livesCounter = new FlxGroup(6);
-		add(livesCounter);
-
 		var temp:FlxSprite;
+		
+		livesCounter = new FlxGroup(3);
+		add(livesCounter);
 		
 		if(Reg.lives <= 3) {
 			for(i in 0 ... Reg.lives) {
@@ -38,6 +39,23 @@ class HUD extends FlxGroup
 
 			temp = new FlxSprite(35, 0, "assets/images/ship.png");
 			livesCounter.add(temp);
+		}
+		
+		bombsCounter = new FlxGroup(3);
+		add(bombsCounter);
+		
+		if(Reg.bombs <= 3) {
+			for(i in 0 ... Reg.bombs) {
+				temp = new FlxSprite(32 * i, FlxG.height - 32, "assets/images/bomb.png");
+				bombsCounter.add(temp);
+			}
+		}
+		else {
+			var temp2:FlxText = new FlxText(0, FlxG.height - 30, 40, Reg.bombs + "X", 20);
+			bombsCounter.add(temp2);
+
+			temp = new FlxSprite(35, FlxG.height - 32, "assets/images/bomb.png");
+			bombsCounter.add(temp);
 		}
 
 		scoreCounter = new FlxText(300, 0, 100, "SCORE: " + leadingZeros(Reg.score), 20);

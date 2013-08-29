@@ -8,13 +8,13 @@ import flixel.util.*;
 
 class Enemy extends FlxSprite
 {
-	private static var HIT_TIMEOUT:Int = 9;
 	private var hitTimer:Int = 0;
 
 	private var hitPoints:Int = 1;
 	private var scoreValue:Int = 1;
 
 	private var hasExtraLife:Bool = false;
+	private var hasExtraBomb:Bool = false;
 	private var hasUpgrade:Bool = false;
 
 	public function new()
@@ -43,7 +43,7 @@ class Enemy extends FlxSprite
 		hitPoints--;
 
 		if(hitPoints > 0) {
-			hitTimer = HIT_TIMEOUT;
+			hitTimer = Constants.ENEMY_HIT_TIMEOUT;
 			FlxG.sound.play("assets/sounds/hit.wav", Reg.sfxVolume);
 		}
 		else {
@@ -53,6 +53,9 @@ class Enemy extends FlxSprite
 
 			if(hasExtraLife) {
 				Recycler.spawnExtraLife(getMidpoint().x, getMidpoint().y);
+			}
+			if(hasExtraBomb) {
+				Recycler.spawnExtraBomb(getMidpoint().x, getMidpoint().y);
 			}
 			if(hasUpgrade) {
 				Recycler.spawnUpgrade(getMidpoint().x, getMidpoint().y);

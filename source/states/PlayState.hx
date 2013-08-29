@@ -31,7 +31,9 @@ class PlayState extends FlxState
 
 		Recycler.init();
 		add(Recycler.extraLives);
+		add(Recycler.extraBombs);
 		add(Recycler.upgrades);
+		
 		add(Recycler.playerBullets);
 		add(Recycler.enemyBullets);
 		add(Recycler.explosions);
@@ -45,8 +47,9 @@ class PlayState extends FlxState
 		add(Reg.hud);
 
 		Reg.score = 0;
-		Reg.lives = 3;
 		Reg.upgrades = 0;
+		Reg.lives = Constants.NUM_LIVES;
+		Reg.bombs = Constants.NUM_BOMBS;
 		
 		add(new Announcer("Wave 1"));
 
@@ -77,7 +80,9 @@ class PlayState extends FlxState
 		super.update();
 
 		FlxG.overlap(player, Recycler.extraLives, onLifePickup);
+		FlxG.overlap(player, Recycler.extraBombs, onBombPickup);
 		FlxG.overlap(player, Recycler.upgrades, onUpgradePickup);
+		
 		FlxG.overlap(player, Recycler.enemyBullets, onPlayerHit);
 		FlxG.overlap(player, enemies, onCollide);
 		FlxG.overlap(enemies, Recycler.playerBullets, onEnemyHit);
@@ -109,6 +114,14 @@ class PlayState extends FlxState
 		Reg.lives++;
 
 		FlxG.sound.play("assets/sounds/extra-life.wav", Reg.sfxVolume);
+	}
+	
+	private function onBombPickup(playerRef:PlayerShip, extraBombRef:FlxSprite):Void
+	{
+		extraBombRef.kill();
+		Reg.bombs++;
+
+		FlxG.sound.play("assets/sounds/bomb.wav", Reg.sfxVolume);
 	}
 
 	private function onUpgradePickup(playerRef:PlayerShip, upgradeRef:FlxSprite):Void
