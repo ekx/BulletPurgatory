@@ -86,6 +86,8 @@ class PlayState extends FlxState
 		FlxG.overlap(player, Recycler.enemyBullets, onPlayerHit);
 		FlxG.overlap(player, enemies, onCollide);
 		FlxG.overlap(enemies, Recycler.playerBullets, onEnemyHit);
+
+		Reg.controller.poll();
 	}
 
 	private function onPlayerHit(playerRef:PlayerShip, bulletRef:FlxObject):Void	

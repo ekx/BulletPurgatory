@@ -7,15 +7,13 @@ import flixel.*;
 
 class PlayerShip extends FlxSprite
 {
-	private var shotTimer:Int = 0;
-	private var hitTimer:Int = 0;
-	
-	private var controller:Controller;
+	private var shotTimer:Int = Constants.PLAYER_SHOT_TIMEOUT;
+	private var bombTimer:Int = Constants.PLAYER_BOMB_TIMEOUT;
+
+	private var hitTimer:Int = Constants.PLAYER_HIT_TIMEOUT;
 
 	public function new()
-	{
-		controller = new Controller();
-		
+	{		
 		super(FlxG.width / 2 - 16, FlxG.height - 50, "assets/images/ship.png");
 		
 		width = 10;
@@ -29,18 +27,18 @@ class PlayerShip extends FlxSprite
 		velocity.y = 0;
 
 		//Horizontal movement
-		if(FlxG.keyboard.pressed("LEFT", "A") || controller.isLeftPressed()) {
+		if(FlxG.keyboard.pressed("LEFT", "A") || Reg.controller.leftPressed()) {
 			velocity.x -= Constants.PLAYER_HORIZONTAL_SPEED;		
 		}
-		else if(FlxG.keyboard.pressed("RIGHT", "D") || controller.isRightPressed()) {
+		else if(FlxG.keyboard.pressed("RIGHT", "D") || Reg.controller.rightPressed()) {
 			velocity.x += Constants.PLAYER_HORIZONTAL_SPEED;		
 		}
 
 		//Vertical movement
-		if(FlxG.keyboard.pressed("UP", "W") || controller.isUpPressed()) {
+		if(FlxG.keyboard.pressed("UP", "W") || Reg.controller.upPressed()) {
 			velocity.y -= Constants.PLAYER_VERTICAL_SPEED;		
 		}
-		else if(FlxG.keyboard.pressed("DOWN", "S") || controller.isDownPressed()) {
+		else if(FlxG.keyboard.pressed("DOWN", "S") || Reg.controller.downPressed()) {
 			velocity.y += Constants.PLAYER_VERTICAL_SPEED;		
 		}
 
@@ -61,7 +59,7 @@ class PlayerShip extends FlxSprite
 		}
 
 		//Shooting
-		if((FlxG.keyboard.pressed("SPACE") || controller.isButtonPressed(Controller.A)) && shotTimer == 0)
+		if((FlxG.keyboard.pressed("SPACE") || Reg.controller.pressed(Controller.A)) && shotTimer == 0)
 		{
 			FlxG.sound.play("assets/sounds/shot.wav", Reg.sfxVolume);
 			
@@ -95,8 +93,16 @@ class PlayerShip extends FlxSprite
 			shotTimer = Constants.PLAYER_SHOT_TIMEOUT;
 		}
 
+		if((FlxG.keyboard.anyPressed(["ENTER"]) || Reg.controller.anyPressed([Controller.B, Controller.X])) && bombTimer == 0) {
+
+
+			bombTimer = Constants.PLAYER_BOMB_TIMEOUT;
+		}
+
 		if(shotTimer > 0)
 			shotTimer--;
+		if(bombTimer > 0)
+			bombTimer--;
 
 		if(hitTimer > 0) {
 			hitTimer--;

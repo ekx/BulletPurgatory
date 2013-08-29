@@ -2,6 +2,8 @@ package utils;
 
 class Reg
 {
+	static public var controller:Controller = new Controller();
+
 	static public var hud:HUD;
 
 	static public var score(get, set):Int;
@@ -12,12 +14,12 @@ class Reg
 	static public var lives(get, set):Int;
 	static private var _lives:Int;
 	static public function get_lives():Int {return _lives;}
-	static public function set_lives(value:Int):Int { _lives = value; if(value > 9) value = 9; hud.updateHUD(); return _lives; }
+	static public function set_lives(value:Int):Int { _lives = value; hud.updateHUD(); return _lives; }
 	
 	static public var bombs(get, set):Int;
 	static private var _bombs:Int;
 	static public function get_bombs():Int {return _bombs;}
-	static public function set_bombs(value:Int):Int { _bombs = value; if(value > 9) value = 9; hud.updateHUD(); return _bombs; }
+	static public function set_bombs(value:Int):Int { _bombs = value; hud.updateHUD(); return _bombs; }
 	
 	static public var upgrades:Int;
 	

@@ -17,16 +17,12 @@ class GameOverState extends FlxState
 	private var gameOverText:FlxText;
 	private var scoreText:FlxText;
 	private var restartText:FlxText;
-	
-	private var controller:Controller;
-	
+
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
 	override public function create():Void
 	{
-		controller = new Controller();
-		
 		// Set a background color
 		FlxG.cameras.bgColor = 0xff131c1b;
 		
@@ -61,8 +57,10 @@ class GameOverState extends FlxState
 	{
 		super.update();
 		
-		if(FlxG.keyboard.anyJustPressed(["ENTER"]) || controller.justButtonPressed(Controller.START)) {
+		if(FlxG.keyboard.justPressed("ENTER") || Reg.controller.justPressed(Controller.START)) {
 			FlxG.switchState(new PlayState());
 		}
+
+		Reg.controller.poll();
 	}	
 }

@@ -19,6 +19,7 @@ class Constants
 	public static inline var PLAYER_HORIZONTAL_SPEED:Int = 300;
 	public static inline var PLAYER_VERTICAL_SPEED:Int = 200;
 	public static inline var PLAYER_SHOT_TIMEOUT:Int = 10;
+	public static inline var PLAYER_BOMB_TIMEOUT:Int = 100;
 	public static inline var PLAYER_HIT_TIMEOUT:Int = 200;
 	public static inline var SCREEN_BOUNDARY_PADDING:Int = 4;
 	

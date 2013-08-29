@@ -53,22 +53,55 @@ class Controller
 	
 	public function new()
 	{
-		gamePad = FlxG.gamepads.get(0);
+		if(FlxG.gamepads != null)
+			gamePad = FlxG.gamepads.get(0);
+		else
+			gamePad = null;
 	}
 
-	public function isButtonPressed(buttonId:Int):Bool
+	public function pressed(buttonId:Int):Bool
 	{
-		return gamePad.pressed(buttonId);
+		if(gamePad != null)
+			return gamePad.pressed(buttonId);
+
+		return false;
+	}
+
+	public function anyPressed(values:Array<Int>):Bool
+	{
+		var result:Bool = false;
+
+		for(i in 0 ... values.length) {
+			if(pressed(values[i]))
+				result = true;
+		}
+
+		return result;
 	}
 	
-	public function justButtonPressed(buttonId:Int):Bool
+	public function justPressed(buttonId:Int):Bool
 	{
-		return gamePad.justPressed(buttonId);
+		if(gamePad != null)
+			return gamePad.justPressed(buttonId);
+
+		return false;
 	}
 
-	public function isDownPressed():Bool
+	public function anyJustPressed(values:Array<Int>):Bool
 	{
-		if(gamePad.hat.y > 0 || gamePad.getAxis(LEFT_ANALOGUE_Y) > gamePad.deadZone)
+		var result:Bool = false;
+
+		for(i in 0 ... values.length) {
+			if(justPressed(values[i]))
+				result = true;
+		}
+
+		return result;
+	}
+
+	public function downPressed():Bool
+	{
+		if(gamePad != null && (gamePad.hat.y > 0 || gamePad.getAxis(LEFT_ANALOGUE_Y) > gamePad.deadZone))
 			return true;
 
 		return false;
@@ -76,15 +109,15 @@ class Controller
 	
 	public function justDownPressed():Bool
 	{
-		if(isDownPressed() && !lastDown)
+		if(downPressed() && !lastDown)
 			return true;
 			
 		return false;
 	}
 
-	public function isLeftPressed():Bool
+	public function leftPressed():Bool
 	{
-		if(gamePad.hat.x < 0 || gamePad.getAxis(LEFT_ANALOGUE_X) < -gamePad.deadZone)
+		if(gamePad != null && (gamePad.hat.x < 0 || gamePad.getAxis(LEFT_ANALOGUE_X) < -gamePad.deadZone))
 			return true;
 
 		return false;
@@ -92,15 +125,15 @@ class Controller
 	
 	public function justLeftPressed():Bool
 	{
-		if(isLeftPressed() && !lastLeft)
+		if(leftPressed() && !lastLeft)
 			return true;
 			
 		return false;
 	}
 
-	public function isRightPressed():Bool
+	public function rightPressed():Bool
 	{
-		if(gamePad.hat.x > 0 || gamePad.getAxis(LEFT_ANALOGUE_X) > gamePad.deadZone)
+		if(gamePad != null && (gamePad.hat.x > 0 || gamePad.getAxis(LEFT_ANALOGUE_X) > gamePad.deadZone))
 			return true;
 
 		return false;
@@ -108,15 +141,15 @@ class Controller
 	
 	public function justRightPressed():Bool
 	{
-		if(isRightPressed() && !lastRight)
+		if(rightPressed() && !lastRight)
 			return true;
 			
 		return false;
 	}
 
-	public function isUpPressed():Bool
+	public function upPressed():Bool
 	{
-		if(gamePad.hat.y < 0 || gamePad.getAxis(LEFT_ANALOGUE_Y) < -gamePad.deadZone)
+		if(gamePad != null && (gamePad.hat.y < 0 || gamePad.getAxis(LEFT_ANALOGUE_Y) < -gamePad.deadZone))
 			return true;
 
 		return false;
@@ -124,7 +157,7 @@ class Controller
 	
 	public function justUpPressed():Bool
 	{
-		if(isUpPressed() && !lastUp)
+		if(upPressed() && !lastUp)
 			return true;
 			
 		return false;
@@ -132,9 +165,9 @@ class Controller
 	
 	public function poll():Void
 	{
-		lastDown = isDownPressed();
-		lastLeft = isLeftPressed();
-		lastRight = isRightPressed();
-		lastUp = isUpPressed();
+		lastDown = downPressed();
+		lastLeft = leftPressed();
+		lastRight = rightPressed();
+		lastUp = upPressed();
 	}
 }
