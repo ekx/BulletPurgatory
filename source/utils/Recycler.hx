@@ -46,7 +46,7 @@ class Recycler
 		extraLives = new FlxGroup(Constants.NUM_EXTRA_LIVES);
 
 		for(i in 0 ... Constants.NUM_EXTRA_LIVES) {
-			sprite = new FlxSprite(-100, -100, "assets/images/extra-life.png");
+			sprite = new FlxSprite(-100, -100, "assets/images/life-pickup.png");
 			sprite.exists = false;
 			extraLives.add(sprite);
 		}
@@ -54,7 +54,7 @@ class Recycler
 		extraBombs = new FlxGroup(Constants.NUM_EXTRA_BOMBS);
 
 		for(i in 0 ... Constants.NUM_EXTRA_BOMBS) {
-			sprite = new FlxSprite(-100, -100, "assets/images/bomb.png");
+			sprite = new FlxSprite(-100, -100, "assets/images/bomb-pickup.png");
 			sprite.exists = false;
 			extraBombs.add(sprite);
 		}
@@ -62,7 +62,7 @@ class Recycler
 		upgrades = new FlxGroup(Constants.NUM_UPGRADES);
 
 		for(i in 0 ... Constants.NUM_UPGRADES) {
-			sprite = new FlxSprite(-100, -100, "assets/images/upgrade.png");
+			sprite = new FlxSprite(-100, -100, "assets/images/power-pickup.png");
 			sprite.exists = false;
 			upgrades.add(sprite);
 		}

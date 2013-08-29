@@ -62,7 +62,8 @@ class PlayerShip extends FlxSprite
 		if((FlxG.keyboard.pressed("SPACE") || Reg.controller.pressed(Controller.A)) && shotTimer == 0)
 		{
 			FlxG.sound.play("assets/sounds/shot.wav", Reg.sfxVolume);
-			
+			shotTimer = Constants.PLAYER_SHOT_TIMEOUT;
+
 			shoot(0, -391);
 
 			if(Reg.upgrades >= 1) {
@@ -89,14 +90,14 @@ class PlayerShip extends FlxSprite
 				shoot(-100, -370);
 				shoot(100, -370);
 			}
-
-			shotTimer = Constants.PLAYER_SHOT_TIMEOUT;
 		}
 
-		if((FlxG.keyboard.anyPressed(["ENTER"]) || Reg.controller.anyPressed([Controller.B, Controller.X])) && bombTimer == 0) {
-
-
+		if((FlxG.keyboard.pressed("ALT") || Reg.controller.pressed(Controller.X)) && bombTimer == 0 && Reg.bombs > 0) {
+			Reg.bombs--;
+			FlxG.sound.play("assets/sounds/bomb-explosion.wav", Reg.sfxVolume);
 			bombTimer = Constants.PLAYER_BOMB_TIMEOUT;
+
+			
 		}
 
 		if(shotTimer > 0)

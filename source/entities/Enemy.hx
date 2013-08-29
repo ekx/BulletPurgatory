@@ -35,12 +35,12 @@ class Enemy extends FlxSprite
 		}
 	}
 
-	public function hit():Void
+	public function hit(damage:Int = 1):Void
 	{
 		if(hitTimer > 0)
 			return;
 
-		hitPoints--;
+		hitPoints -= damage;
 
 		if(hitPoints > 0) {
 			hitTimer = Constants.ENEMY_HIT_TIMEOUT;

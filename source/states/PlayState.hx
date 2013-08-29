@@ -115,7 +115,7 @@ class PlayState extends FlxState
 		extraLifeRef.kill();
 		Reg.lives++;
 
-		FlxG.sound.play("assets/sounds/extra-life.wav", Reg.sfxVolume);
+		FlxG.sound.play("assets/sounds/life-pickup.wav", Reg.sfxVolume);
 	}
 	
 	private function onBombPickup(playerRef:PlayerShip, extraBombRef:FlxSprite):Void
@@ -123,7 +123,7 @@ class PlayState extends FlxState
 		extraBombRef.kill();
 		Reg.bombs++;
 
-		FlxG.sound.play("assets/sounds/bomb.wav", Reg.sfxVolume);
+		FlxG.sound.play("assets/sounds/bomb-pickup.wav", Reg.sfxVolume);
 	}
 
 	private function onUpgradePickup(playerRef:PlayerShip, upgradeRef:FlxSprite):Void
@@ -131,6 +131,6 @@ class PlayState extends FlxState
 		upgradeRef.kill();
 		Reg.upgrades++;
 
-		FlxG.sound.play("assets/sounds/powerup.wav", Reg.sfxVolume);
+		FlxG.sound.play("assets/sounds/power-pickup.wav", Reg.sfxVolume);
 	}
 }

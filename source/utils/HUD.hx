@@ -46,7 +46,7 @@ class HUD extends FlxGroup
 		
 		if(Reg.bombs <= 3) {
 			for(i in 0 ... Reg.bombs) {
-				temp = new FlxSprite(32 * i, FlxG.height - 32, "assets/images/bomb.png");
+				temp = new FlxSprite(32 * i, FlxG.height - 32, "assets/images/bomb-pickup.png");
 				bombsCounter.add(temp);
 			}
 		}
@@ -54,7 +54,7 @@ class HUD extends FlxGroup
 			var temp2:FlxText = new FlxText(0, FlxG.height - 30, 40, Reg.bombs + "X", 20);
 			bombsCounter.add(temp2);
 
-			temp = new FlxSprite(35, FlxG.height - 32, "assets/images/bomb.png");
+			temp = new FlxSprite(35, FlxG.height - 32, "assets/images/bomb-pickup.png");
 			bombsCounter.add(temp);
 		}
 
