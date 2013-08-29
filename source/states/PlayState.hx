@@ -22,7 +22,7 @@ class PlayState extends FlxState
 	 * Function that is called up when to state is created to set it up. 
 	 */
 	override public function create():Void
-	{		
+	{
 		// Set a background color
 		FlxG.cameras.bgColor = 0xff131c1b;
 
