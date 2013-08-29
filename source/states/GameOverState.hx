@@ -17,21 +17,29 @@ class GameOverState extends FlxState
 	private var gameOverText:FlxText;
 	private var scoreText:FlxText;
 	private var restartText:FlxText;
+	
+	private var controller:Controller;
+	
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
 	override public function create():Void
 	{
+		controller = new Controller();
+		
 		// Set a background color
 		FlxG.cameras.bgColor = 0xff131c1b;
 		
-		gameOverText = new FlxText(FlxG.width / 2 - 170, FlxG.height / 2 - 25, 400, "GAME OVER", 50);
+		gameOverText = new FlxText(0, FlxG.height / 4, FlxG.width, "GAME OVER", 50);
+		gameOverText.alignment = "center";
 		add(gameOverText);
 		
-		scoreText = new FlxText(FlxG.width / 2 - 150, FlxG.height / 2 + 125, 400, "You scored " + Reg.score + " Points", 20);
+		scoreText = new FlxText(0, FlxG.height / 2, FlxG.width, "You scored " + Reg.score + " Points", 20);
+		scoreText.alignment = "center";
 		add(scoreText);
 		
-		restartText = new FlxText(FlxG.width / 2 - 150, FlxG.height / 2 + 165, 400, "To restart press Enter", 20);
+		restartText = new FlxText(0, FlxG.height / 2 + 40, FlxG.width, "To restart press Enter or Start", 20);
+		restartText.alignment = "center";
 		add(restartText);
 		
 		super.create();
@@ -53,7 +61,7 @@ class GameOverState extends FlxState
 	{
 		super.update();
 		
-		if(FlxG.keyboard.anyJustPressed(["ENTER"])) {
+		if(FlxG.keyboard.anyJustPressed(["ENTER"]) || controller.justButtonPressed(Controller.START)) {
 			FlxG.switchState(new PlayState());
 		}
 	}	

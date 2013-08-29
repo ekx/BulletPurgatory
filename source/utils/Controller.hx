@@ -1,5 +1,6 @@
 package utils;
 
+import flixel.*;
 import flixel.system.input.gamepad.*;
 
 class Controller 
@@ -44,7 +45,12 @@ class Controller
 	#end
 
 	private var gamePad:FlxGamepad;
-
+	
+	private var lastUp:Bool = false;
+	private var lastDown:Bool = false;
+	private var lastRight:Bool = false;
+	private var lastLeft:Bool = false;
+	
 	public function new()
 	{
 		gamePad = FlxG.gamepads.get(0);
@@ -54,36 +60,81 @@ class Controller
 	{
 		return gamePad.pressed(buttonId);
 	}
+	
+	public function justButtonPressed(buttonId:Int):Bool
+	{
+		return gamePad.justPressed(buttonId);
+	}
 
 	public function isDownPressed():Bool
 	{
-		if(gamePad.hat.x > 0 || Math.abs(gamePad.getAxis(LEFT_ANALOGUE_X)) > gamePad.deadZone)
+		if(gamePad.hat.y > 0 || gamePad.getAxis(LEFT_ANALOGUE_Y) > gamePad.deadZone)
 			return true;
 
+		return false;
+	}
+	
+	public function justDownPressed():Bool
+	{
+		if(isDownPressed() && !lastDown)
+			return true;
+			
 		return false;
 	}
 
 	public function isLeftPressed():Bool
 	{
-		if(gamePad.hat.y < 0 || Math.abs(gamePad.getAxis(LEFT_ANALOGUE_X)) > gamePad.deadZone)
+		if(gamePad.hat.x < 0 || gamePad.getAxis(LEFT_ANALOGUE_X) < -gamePad.deadZone)
 			return true;
 
+		return false;
+	}
+	
+	public function justLeftPressed():Bool
+	{
+		if(isLeftPressed() && !lastLeft)
+			return true;
+			
 		return false;
 	}
 
 	public function isRightPressed():Bool
 	{
-		if(gamePad.hat.y > 0 || Math.abs(gamePad.getAxis(LEFT_ANALOGUE_X)) > gamePad.deadZone)
+		if(gamePad.hat.x > 0 || gamePad.getAxis(LEFT_ANALOGUE_X) > gamePad.deadZone)
 			return true;
 
+		return false;
+	}
+	
+	public function justRightPressed():Bool
+	{
+		if(isRightPressed() && !lastRight)
+			return true;
+			
 		return false;
 	}
 
 	public function isUpPressed():Bool
 	{
-		if(gamePad.hat.x < 0 || Math.abs(gamePad.getAxis(LEFT_ANALOGUE_X)) > gamePad.deadZone)
+		if(gamePad.hat.y < 0 || gamePad.getAxis(LEFT_ANALOGUE_Y) < -gamePad.deadZone)
 			return true;
 
 		return false;
+	}
+	
+	public function justUpPressed():Bool
+	{
+		if(isUpPressed() && !lastUp)
+			return true;
+			
+		return false;
+	}
+	
+	public function poll():Void
+	{
+		lastDown = isDownPressed();
+		lastLeft = isLeftPressed();
+		lastRight = isRightPressed();
+		lastUp = isUpPressed();
 	}
 }

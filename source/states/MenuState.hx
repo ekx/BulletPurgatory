@@ -25,15 +25,20 @@ class MenuState extends FlxState
 	
 	private var selection:Int = 0;
 	
+	private var controller:Controller;
+	
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
 	override public function create():Void
 	{
+		controller = new Controller();
+		
 		// Set a background color
 		FlxG.cameras.bgColor = 0xff131c1b;
 		
-		title = new FlxText(10, 50, 400, "Bullet Purgatory", 36);
+		title = new FlxText(0, FlxG.height / 6, FlxG.width, "Bullet Purgatory", 36);
+		title.alignment = "center";
 		add(title);
 		
 		newGame = new FlxText(100, 300, 200, "New Game", 30);
@@ -65,14 +70,14 @@ class MenuState extends FlxState
 	{
 		super.update();
 		
-		if(FlxG.keyboard.anyJustPressed(["UP", "W"])) {
+		if(FlxG.keyboard.anyJustPressed(["UP", "W"]) || controller.justUpPressed()) {
 			FlxG.sound.play("assets/sounds/select.wav", Reg.sfxVolume);
 			selection--;
 			
 			if(selection == -1)
 				selection = 2;
 		}
-		if(FlxG.keyboard.anyJustPressed(["DOWN", "S"])) {
+		if(FlxG.keyboard.anyJustPressed(["DOWN", "S"]) || controller.justDownPressed()) {
 			FlxG.sound.play("assets/sounds/select.wav", Reg.sfxVolume);
 			selection++;
 			
@@ -80,7 +85,7 @@ class MenuState extends FlxState
 				selection = 0;
 		}
 		
-		if(FlxG.keyboard.anyJustPressed(["SPACE", "ENTER"])) {
+		if(FlxG.keyboard.anyJustPressed(["SPACE", "ENTER"]) || controller.justButtonPressed(Controller.A) || controller.justButtonPressed(Controller.START)) {
 			switch(selection) {
 				case 0:
 					onNewGame();
@@ -99,6 +104,8 @@ class MenuState extends FlxState
 			case 2:
 				cursor.y = 410;
 		}
+		
+		controller.poll();
 	}
 	
 	private function onNewGame():Void

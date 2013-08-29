@@ -17,9 +17,13 @@ class PlayerShip extends FlxSprite
 
 	private static var HIT_TIMEOUT:Int = 200;
 	private var hitTimer:Int = 0;
+	
+	private var controller:Controller;
 
 	public function new()
 	{
+		controller = new Controller();
+		
 		super(FlxG.width / 2 - 16, FlxG.height - 50, "assets/images/ship.png");
 		
 		width = 10;
@@ -33,18 +37,18 @@ class PlayerShip extends FlxSprite
 		velocity.y = 0;
 
 		//Horizontal movement
-		if(FlxG.keyboard.pressed("LEFT", "A")) {
+		if(FlxG.keyboard.pressed("LEFT", "A") || controller.isLeftPressed()) {
 			velocity.x -= HORIZONTAL_SPEED;		
 		}
-		else if(FlxG.keyboard.pressed("RIGHT", "D")) {
+		else if(FlxG.keyboard.pressed("RIGHT", "D") || controller.isRightPressed()) {
 			velocity.x += HORIZONTAL_SPEED;		
 		}
 
 		//Vertical movement
-		if(FlxG.keyboard.pressed("UP", "W")) {
+		if(FlxG.keyboard.pressed("UP", "W") || controller.isUpPressed()) {
 			velocity.y -= VERTICAL_SPEED;		
 		}
-		else if(FlxG.keyboard.pressed("DOWN", "S")) {
+		else if(FlxG.keyboard.pressed("DOWN", "S") || controller.isDownPressed()) {
 			velocity.y += VERTICAL_SPEED;		
 		}
 
@@ -65,7 +69,7 @@ class PlayerShip extends FlxSprite
 		}
 
 		//Shooting
-		if(FlxG.keyboard.pressed("SPACE") && shotTimer == 0)
+		if((FlxG.keyboard.pressed("SPACE") || controller.isButtonPressed(Controller.A)) && shotTimer == 0)
 		{
 			FlxG.sound.play("assets/sounds/shot.wav", Reg.sfxVolume);
 			

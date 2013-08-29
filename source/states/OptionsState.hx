@@ -25,15 +25,20 @@ class OptionsState extends FlxState
 	
 	private var selection:Int = 0;
 	
+	private var controller:Controller;
+	
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
 	override public function create():Void
 	{
+		controller = new Controller();
+		
 		// Set a background color
 		FlxG.cameras.bgColor = 0xff131c1b;
 		
-		title = new FlxText(10, 50, 400, "Options", 36);
+		title = new FlxText(0, FlxG.height / 6, FlxG.width, "Options", 36);
+		title.alignment = "center";
 		add(title);
 		
 		sfxVol = new FlxText(100, 300, 300, "SFX Vol:    " + Reg.sfxVolume * 100 + "%", 30);
@@ -65,7 +70,7 @@ class OptionsState extends FlxState
 	{
 		super.update();
 		
-		if(FlxG.keyboard.anyJustPressed(["LEFT", "A"])) {
+		if(FlxG.keyboard.anyJustPressed(["LEFT", "A"]) || controller.justLeftPressed()) {
 			switch(selection) {
 				case 0:
 					if(Reg.sfxVolume > 0.1) {
@@ -82,7 +87,7 @@ class OptionsState extends FlxState
 			}
 		}
 		
-		if(FlxG.keyboard.anyJustPressed(["RIGHT", "D"])) {
+		if(FlxG.keyboard.anyJustPressed(["RIGHT", "D"]) || controller.justRightPressed()) {
 			switch(selection) {
 				case 0:
 					if(Reg.sfxVolume < 1) {
@@ -95,14 +100,14 @@ class OptionsState extends FlxState
 			}
 		}
 		
-		if(FlxG.keyboard.anyJustPressed(["UP", "W"])) {
+		if(FlxG.keyboard.anyJustPressed(["UP", "W"]) || controller.justUpPressed()) {
 			FlxG.sound.play("assets/sounds/select.wav", Reg.sfxVolume);
 			selection--;
 			
 			if(selection == -1)
 				selection = 2;
 		}
-		if(FlxG.keyboard.anyJustPressed(["DOWN", "S"])) {
+		if(FlxG.keyboard.anyJustPressed(["DOWN", "S"]) || controller.justDownPressed()) {
 			FlxG.sound.play("assets/sounds/select.wav", Reg.sfxVolume);
 			selection++;
 			
@@ -110,7 +115,7 @@ class OptionsState extends FlxState
 				selection = 0;
 		}
 		
-		if(FlxG.keyboard.anyJustPressed(["SPACE", "ENTER"])) {
+		if(FlxG.keyboard.anyJustPressed(["SPACE", "ENTER"]) || controller.justButtonPressed(Controller.A) || controller.justButtonPressed(Controller.START)) {
 			switch(selection) {
 				case 2:
 					onBack();
@@ -128,6 +133,8 @@ class OptionsState extends FlxState
 		
 		sfxVol.text = "SFX Vol:    " + Std.int(Reg.sfxVolume * 100) + "%";
 		musicVol.text = "Music Vol: " + Std.int(Reg.musicVolume * 100) + "%";
+		
+		controller.poll();
 	}
 	
 	private function onBack():Void
