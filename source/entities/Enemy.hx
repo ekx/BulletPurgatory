@@ -37,7 +37,7 @@ class Enemy extends FlxSprite
 
 	public function hit(damage:Int = 1):Void
 	{
-		if(hitTimer > 0)
+		if(hitTimer > 0 || !exists)
 			return;
 
 		hitPoints -= damage;
@@ -62,6 +62,7 @@ class Enemy extends FlxSprite
 			}
 
 			kill();
+			destroy();
 		}
 	}
 

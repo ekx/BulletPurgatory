@@ -8,6 +8,7 @@ class Constants
 	
 	//Enemy
 	public static inline var ENEMY_HIT_TIMEOUT:Int = 9;
+	public static inline var ENEMY_BULLET_SIZE:Int = 7;
 	
 	//SimpleEnemy
 	public static inline var SIMPLE_ENEMY_SHOOT_TIMER:Int = 50;

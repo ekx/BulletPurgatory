@@ -14,10 +14,6 @@ import flixel.util.*;
  */
 class PlayState extends FlxState
 {
-	private var player:PlayerShip;
-	private var enemies:FlxGroup;
-	private var starField:StarField;
-
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
@@ -26,8 +22,8 @@ class PlayState extends FlxState
 		// Set a background color
 		FlxG.cameras.bgColor = 0xff131c1b;
 
-		starField = new StarField();
-		add(starField);
+		Reg.starField = new StarField();
+		add(Reg.starField);
 
 		Recycler.init();
 		add(Recycler.extraLives);
@@ -38,10 +34,10 @@ class PlayState extends FlxState
 		add(Recycler.enemyBullets);
 		add(Recycler.explosions);
 
-		enemies = new FlxGroup();
-		add(enemies);
-		player = new PlayerShip();
-		add(player);		
+		Reg.enemies = new FlxGroup();
+		add(Reg.enemies);
+		Reg.player = new PlayerShip();
+		add(Reg.player);		
 
 		Reg.hud = new HUD();
 		add(Reg.hud);
@@ -75,17 +71,17 @@ class PlayState extends FlxState
 	{
 		var temp:Int = FlxRandom.intRanged(0, 100);
 		if(temp == 100)
-			enemies.add(new SimpleEnemy());
+			Reg.enemies.add(new SimpleEnemy());
 
 		super.update();
 
-		FlxG.overlap(player, Recycler.extraLives, onLifePickup);
-		FlxG.overlap(player, Recycler.extraBombs, onBombPickup);
-		FlxG.overlap(player, Recycler.upgrades, onUpgradePickup);
+		FlxG.overlap(Reg.player, Recycler.extraLives, onLifePickup);
+		FlxG.overlap(Reg.player, Recycler.extraBombs, onBombPickup);
+		FlxG.overlap(Reg.player, Recycler.upgrades, onUpgradePickup);
 		
-		FlxG.overlap(player, Recycler.enemyBullets, onPlayerHit);
-		FlxG.overlap(player, enemies, onCollide);
-		FlxG.overlap(enemies, Recycler.playerBullets, onEnemyHit);
+		FlxG.overlap(Reg.player, Recycler.enemyBullets, onPlayerHit);
+		FlxG.overlap(Reg.player, Reg.enemies, onCollide);
+		FlxG.overlap(Reg.enemies, Recycler.playerBullets, onEnemyHit);
 
 		Reg.controller.poll();
 	}

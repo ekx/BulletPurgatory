@@ -23,7 +23,7 @@ class Recycler
 		playerBullets = new FlxGroup(Constants.NUM_PLAYER_BULLETS);
 		
 		for(i in 0 ... Constants.NUM_PLAYER_BULLETS) {
-			sprite = new FlxSprite( -100, -100, "assets/images/shot.png");		
+			sprite = new FlxSprite( -100, -100, "assets/images/shot.png");
 			sprite.exists = false;
 			playerBullets.add(sprite);			
 		}
@@ -31,7 +31,9 @@ class Recycler
 		enemyBullets = new FlxGroup(Constants.NUM_ENEMY_BULLETS);
 		
 		for(i in 0 ... Constants.NUM_ENEMY_BULLETS) {
-			sprite = new FlxSprite( -100, -100, "assets/images/enemy_shot.png");	
+			sprite = new FlxSprite( -100, -100, "assets/images/enemy_shot.png");
+			sprite.width = sprite.height = Constants.ENEMY_BULLET_SIZE;
+			sprite.centerOffsets();
 			sprite.exists = false;
 			enemyBullets.add(sprite);			
 		}

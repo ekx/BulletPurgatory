@@ -97,7 +97,12 @@ class PlayerShip extends FlxSprite
 			FlxG.sound.play("assets/sounds/bomb-explosion.wav", Reg.sfxVolume);
 			bombTimer = Constants.PLAYER_BOMB_TIMEOUT;
 
+			Recycler.enemyBullets.kill();
+			Recycler.enemyBullets.revive();
 			
+			for(i in 0 ... Reg.enemies.length) {
+				cast(Reg.enemies.members[i], Enemy).hit(10);
+			}
 		}
 
 		if(shotTimer > 0)
