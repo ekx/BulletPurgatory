@@ -21,8 +21,6 @@ class MenuState extends FlxState
 	private var options:FlxText;
 	private var exit:FlxText;
 	
-	private var cursor:FlxSprite;
-	
 	private var selection:Int = 0;
 	
 	/**
@@ -45,9 +43,6 @@ class MenuState extends FlxState
 		add(options);
 		exit = new FlxText(100, 420, 200, "Exit", 30);
 		add(exit);
-		
-		cursor = new FlxSprite(50, 290, "assets/images/ship.png");
-		add(cursor);
 		
 		super.create();
 	}
@@ -94,13 +89,17 @@ class MenuState extends FlxState
 			}
 		}
 		
+		newGame.color = 0xFFFFFFFF;
+		options.color = 0xFFFFFFFF;
+		exit.color = 0xFFFFFFFF;
+
 		switch(selection) {
 			case 0:
-				cursor.y = 290;
+				newGame.color = Constants.SELECTED_ITEM_COLOR;
 			case 1:
-				cursor.y = 340;
+				options.color = Constants.SELECTED_ITEM_COLOR;
 			case 2:
-				cursor.y = 410;
+				exit.color = Constants.SELECTED_ITEM_COLOR;
 		}
 		
 		Reg.controller.poll();

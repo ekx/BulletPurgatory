@@ -21,8 +21,6 @@ class OptionsState extends FlxState
 	private var musicVol:FlxText;
 	private var back:FlxText;
 	
-	private var cursor:FlxSprite;
-	
 	private var selection:Int = 0;
 	
 	/**
@@ -43,9 +41,6 @@ class OptionsState extends FlxState
 		add(musicVol);
 		back = new FlxText(100, 420, 200, "Back", 30);
 		add(back);
-		
-		cursor = new FlxSprite(50, 290, "assets/images/ship.png");
-		add(cursor);
 		
 		super.create();
 	}
@@ -118,13 +113,17 @@ class OptionsState extends FlxState
 			}
 		}
 		
+		sfxVol.color = 0xFFFFFFFF;
+		musicVol.color = 0xFFFFFFFF;
+		back.color = 0xFFFFFFFF;
+
 		switch(selection) {
 			case 0:
-				cursor.y = 290;
+				sfxVol.color = Constants.SELECTED_ITEM_COLOR;
 			case 1:
-				cursor.y = 340;
+				musicVol.color = Constants.SELECTED_ITEM_COLOR;
 			case 2:
-				cursor.y = 410;
+				back.color = Constants.SELECTED_ITEM_COLOR;
 		}
 		
 		sfxVol.text = "SFX Vol:    " + Std.int(Reg.sfxVolume * 100) + "%";

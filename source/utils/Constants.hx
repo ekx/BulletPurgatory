@@ -43,4 +43,7 @@ class Constants
 	public static inline var ANNONCER_FONT_SIZE:Int = 40;
 	public static inline var ANNONCER_Y_POS:Int = 100;
 	public static inline var ANNONCER_HEIGHT:Int = 100;
+
+	//Menu
+	public static inline var SELECTED_ITEM_COLOR:Int = 0xFF5CB85C;
 }

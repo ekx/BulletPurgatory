@@ -14,7 +14,13 @@ class PlayerShip extends FlxSprite
 
 	public function new()
 	{		
-		super(FlxG.width / 2 - 16, FlxG.height - 50, "assets/images/ship.png");
+		super(FlxG.width / 2 - 16, FlxG.height - 50);
+
+		loadGraphic("assets/images/ship.png", true, false, 32, 48);
+		addAnimation("idle", [0]);
+		addAnimation("flight", [1, 2], 16, true);
+
+		play("flight");
 		
 		width = 10;
 		height = 10;
