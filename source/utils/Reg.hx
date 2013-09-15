@@ -8,6 +8,7 @@ class Reg
 	static public var controller:Controller = new Controller();
 
 	static public var player:PlayerShip;
+	static public var bomb:Bomb;
 	static public var enemies:FlxGroup;
 	
 	static public var starField:StarField;

@@ -35,12 +35,15 @@ class PlayState extends FlxState
 		add(Recycler.explosions);
 
 		Reg.enemies = new FlxGroup();
-		add(Reg.enemies);
+		add(Reg.enemies);	
 		Reg.player = new PlayerShip();
-		add(Reg.player);		
+		add(Reg.player);
 
 		Reg.hud = new HUD();
 		add(Reg.hud);
+
+		Reg.bomb = new Bomb();
+		add(Reg.bomb);
 
 		Reg.score = 0;
 		Reg.upgrades = 0;

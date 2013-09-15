@@ -98,17 +98,12 @@ class PlayerShip extends FlxSprite
 			}
 		}
 
+		//Bomb
 		if((FlxG.keyboard.pressed("ALT") || Reg.controller.pressed(Controller.X)) && bombTimer == 0 && Reg.bombs > 0) {
 			Reg.bombs--;
-			FlxG.sound.play("assets/sounds/bomb-explosion.wav", Reg.sfxVolume);
 			bombTimer = Constants.PLAYER_BOMB_TIMEOUT;
 
-			Recycler.enemyBullets.kill();
-			Recycler.enemyBullets.revive();
-			
-			for(i in 0 ... Reg.enemies.length) {
-				cast(Reg.enemies.members[i], Enemy).hit(10);
-			}
+			Reg.bomb.reset(0, 0);
 		}
 
 		if(shotTimer > 0)
