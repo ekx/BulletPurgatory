@@ -13,7 +13,7 @@ class Explosion extends FlxSprite
 		loadGraphic("assets/images/explosion.png", true);
 		x -= width / 1.5;
 		y -= height / 3;
-		addAnimation("explosion", [0, 1, 2, 3, 4, 5, 6, 7], 24, false);
+		animation.add("explosion", [0, 1, 2, 3, 4, 5, 6, 7], 24, false);
 		
 		exists = false;
 	}
@@ -21,7 +21,7 @@ class Explosion extends FlxSprite
 	override public function reset(locX:Float, locY:Float):Void {
 		super.reset(locX - width / 1.5 - 10, locY - height / 2);
 
-		play("explosion");
+		animation.play("explosion");
 		FlxG.sound.play("assets/sounds/explosion.wav", Reg.sfxVolume);
 	}
 
@@ -29,7 +29,7 @@ class Explosion extends FlxSprite
 	{
 		super.update();
 
-		if(exists && finished)
+		if(exists && animation.finished)
 			kill();
 	}
 }

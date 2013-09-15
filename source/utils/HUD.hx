@@ -31,8 +31,8 @@ class HUD extends FlxGroup
 			for(i in 0 ... Reg.lives) {
 				temp = new FlxSprite(32 * i, 0);
 				temp.loadGraphic("assets/images/ship.png", true, false, 32, 48);
-				temp.addAnimation("idle", [0]);
-				temp.play("idle");
+				temp.animation.add("idle", [0]);
+				temp.animation.play("idle");
 				livesCounter.add(temp);
 			}
 		}
@@ -42,8 +42,8 @@ class HUD extends FlxGroup
 
 			temp = new FlxSprite(35, 0);
 			temp.loadGraphic("assets/images/ship.png", true, false, 32, 48);
-			temp.addAnimation("idle", [0]);
-			temp.play("idle");
+			temp.animation.add("idle", [0]);
+			temp.animation.play("idle");
 			livesCounter.add(temp);
 		}
 		
