@@ -37,10 +37,11 @@ class HUD extends FlxGroup
 			}
 		}
 		else {
-			var temp2:FlxText = new FlxText(0, 10, 40, Reg.lives + "X", 20);
+			var temp2:FlxText = new FlxText(0, 10, 45, Reg.lives + "X", 20);
+			temp2.font = Constants.FONT;
 			livesCounter.add(temp2);
 
-			temp = new FlxSprite(35, 0);
+			temp = new FlxSprite(45, 0);
 			temp.loadGraphic("assets/images/ship.png", true, false, 32, 48);
 			temp.animation.add("idle", [0]);
 			temp.animation.play("idle");
@@ -57,14 +58,16 @@ class HUD extends FlxGroup
 			}
 		}
 		else {
-			var temp2:FlxText = new FlxText(0, FlxG.height - 30, 40, Reg.bombs + "X", 20);
+			var temp2:FlxText = new FlxText(0, FlxG.height - 27, 45, Reg.bombs + "X", 20);
+			temp2.font = Constants.FONT;
 			bombsCounter.add(temp2);
 
-			temp = new FlxSprite(35, FlxG.height - 32, "assets/images/bomb-pickup.png");
+			temp = new FlxSprite(45, FlxG.height - 32, "assets/images/bomb-pickup.png");
 			bombsCounter.add(temp);
 		}
 
-		scoreCounter = new FlxText(300, 0, 100, "SCORE: " + leadingZeros(Reg.score), 20);
+		scoreCounter = new FlxText(275, 0, 125, "SCORE: " + leadingZeros(Reg.score), 20);
+		scoreCounter.font = Constants.FONT;
 		add(scoreCounter);
 	}
 

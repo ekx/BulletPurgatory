@@ -27,14 +27,17 @@ class GameOverState extends FlxState
 		FlxG.cameras.bgColor = 0xff131c1b;
 		
 		gameOverText = new FlxText(0, FlxG.height / 4, FlxG.width, "GAME OVER", 50);
+		gameOverText.font = Constants.FONT;
 		gameOverText.alignment = "center";
 		add(gameOverText);
 		
 		scoreText = new FlxText(0, FlxG.height / 2, FlxG.width, "You scored " + Reg.score + " Points", 20);
+		scoreText.font = Constants.FONT;
 		scoreText.alignment = "center";
 		add(scoreText);
 		
 		restartText = new FlxText(0, FlxG.height / 2 + 40, FlxG.width, "To restart press Enter or Start", 20);
+		restartText.font = Constants.FONT;
 		restartText.alignment = "center";
 		add(restartText);
 		

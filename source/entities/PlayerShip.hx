@@ -154,7 +154,7 @@ class PlayerShip extends FlxSprite
 	private function shoot(velX:Int, velY:Int):Void
 	{
 		var bullet:FlxSprite = Recycler.getPlayerBullet();
-		bullet.reset(x + width/2 - bullet.width/2, y);
+		bullet.reset(x + width/2 - bullet.width/2, y - 25);
 		bullet.velocity.y = velY;
 		bullet.velocity.x = velX;
 	}

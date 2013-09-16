@@ -34,14 +34,18 @@ class MenuState extends FlxState
 		FlxG.cameras.bgColor = 0xff131c1b;
 		
 		title = new FlxText(0, FlxG.height / 6, FlxG.width, "Bullet Purgatory", 36);
+		title.font = Constants.FONT;
 		title.alignment = "center";
 		add(title);
 		
-		newGame = new FlxText(100, 300, 200, "New Game", 30);
+		newGame = new FlxText(100, 300, 400, "New Game", 30);
+		newGame.font = Constants.FONT;
 		add(newGame);
 		options = new FlxText(100, 350, 200, "Options", 30);
+		options.font = Constants.FONT;
 		add(options);
 		exit = new FlxText(100, 420, 200, "Exit", 30);
+		exit.font = Constants.FONT;
 		add(exit);
 		
 		super.create();

@@ -32,14 +32,18 @@ class OptionsState extends FlxState
 		FlxG.cameras.bgColor = 0xff131c1b;
 		
 		title = new FlxText(0, FlxG.height / 6, FlxG.width, "Options", 36);
+		title.font = Constants.FONT;
 		title.alignment = "center";
 		add(title);
 		
-		sfxVol = new FlxText(100, 300, 300, "SFX Vol:    " + Reg.sfxVolume * 100 + "%", 30);
+		sfxVol = new FlxText(100, 300, 300, "SFX Vol:   " + Reg.sfxVolume * 100, 30);
+		sfxVol.font = Constants.FONT;
 		add(sfxVol);
-		musicVol = new FlxText(100, 350, 300, "Music Vol: " + Reg.musicVolume * 100 + "%", 30);
+		musicVol = new FlxText(100, 350, 300, "Music Vol: " + Reg.musicVolume * 100, 30);
+		musicVol.font = Constants.FONT;
 		add(musicVol);
 		back = new FlxText(100, 420, 200, "Back", 30);
+		back.font = Constants.FONT;
 		add(back);
 		
 		super.create();
@@ -126,8 +130,8 @@ class OptionsState extends FlxState
 				back.color = Constants.SELECTED_ITEM_COLOR;
 		}
 		
-		sfxVol.text = "SFX Vol:    " + Std.int(Reg.sfxVolume * 100) + "%";
-		musicVol.text = "Music Vol: " + Std.int(Reg.musicVolume * 100) + "%";
+		sfxVol.text = "SFX Vol:   " + Std.int(Reg.sfxVolume * 100);
+		musicVol.text = "Music Vol: " + Std.int(Reg.musicVolume * 100);
 		
 		Reg.controller.poll();
 	}

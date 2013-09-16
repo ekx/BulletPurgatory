@@ -46,4 +46,7 @@ class Constants
 
 	//Menu
 	public static inline var SELECTED_ITEM_COLOR:Int = 0xFF5CB85C;
+
+	//General
+	public static inline var FONT:String = "assets/data/pixel.ttf";
 }

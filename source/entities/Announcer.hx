@@ -24,6 +24,7 @@ class Announcer extends FlxGroup
 		background.velocity.y = 700;
 
 		text = new FlxText(-FlxG.width, Constants.ANNONCER_Y_POS + (Constants.ANNONCER_HEIGHT / 2 - Constants.ANNONCER_FONT_SIZE / 2), FlxG.width, content, Constants.ANNONCER_FONT_SIZE);
+		text.font = Constants.FONT;
 		add(text);
 
 		text.alignment = "center";
