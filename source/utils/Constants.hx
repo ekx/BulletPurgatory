@@ -24,9 +24,11 @@ class Constants
 	public static inline var PLAYER_HIT_TIMEOUT:Int = 200;
 	public static inline var SCREEN_BOUNDARY_PADDING:Int = 4;
 	
-	//Stars
+	//Space
 	public static inline var STARS_SPEED:Int = 200; 
 	public static inline var STARS_NUM:Int = 50;
+	public static inline var PLANETS_SPEED:Int = 20; 
+	public static inline var PLANETS_NUM:Int = 5;
 	
 	//Recycler
 	public static inline var NUM_PLAYER_BULLETS:Int = 150;
