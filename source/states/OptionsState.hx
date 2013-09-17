@@ -72,10 +72,6 @@ class OptionsState extends FlxState
 						Reg.sfxVolume -= 0.1;
 						FlxG.sound.play("assets/sounds/select.wav", Reg.sfxVolume);
 					}
-					/*else if(Reg.sfxVolume == 0.1) {
-						Reg.sfxVolume = 0;
-						FlxG.sound.play("assets/sounds/select.wav", Reg.sfxVolume);
-					}*/
 				case 1:
 					if(Reg.musicVolume > 0)
 						Reg.musicVolume -= 0.1;

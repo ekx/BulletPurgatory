@@ -64,33 +64,33 @@ class Bomb extends FlxSprite
 		else if(ttl > Constants.PLAYER_BOMB_TIMEOUT - 15)
 			makeGraphic(FlxG.width, FlxG.height, 0xFFFFFFFF);
 
-		else if(ttl == 14)
+		else if(ttl == 28)
 			makeGraphic(FlxG.width, FlxG.height, 0xEEFFFFFF);
-		else if(ttl == 13)
+		else if(ttl == 26)
 			makeGraphic(FlxG.width, FlxG.height, 0xDDFFFFFF);
-		else if(ttl == 12)
+		else if(ttl == 24)
 			makeGraphic(FlxG.width, FlxG.height, 0xCCFFFFFF);
-		else if(ttl == 11)
+		else if(ttl == 22)
 			makeGraphic(FlxG.width, FlxG.height, 0xBBFFFFFF);
-		else if(ttl == 10)
+		else if(ttl == 20)
 			makeGraphic(FlxG.width, FlxG.height, 0xAAFFFFFF);
-		else if(ttl == 9)
+		else if(ttl == 18)
 			makeGraphic(FlxG.width, FlxG.height, 0x99FFFFFF);
-		else if(ttl == 8)
+		else if(ttl == 16)
 			makeGraphic(FlxG.width, FlxG.height, 0x88FFFFFF);
-		else if(ttl == 7)
+		else if(ttl == 14)
 			makeGraphic(FlxG.width, FlxG.height, 0x77FFFFFF);
-		else if(ttl == 6)
+		else if(ttl == 12)
 			makeGraphic(FlxG.width, FlxG.height, 0x66FFFFFF);
-		else if(ttl == 5)
+		else if(ttl == 10)
 			makeGraphic(FlxG.width, FlxG.height, 0x55FFFFFF);
-		else if(ttl == 4)
+		else if(ttl == 8)
 			makeGraphic(FlxG.width, FlxG.height, 0x44FFFFFF);
-		else if(ttl == 3)
+		else if(ttl == 6)
 			makeGraphic(FlxG.width, FlxG.height, 0x33FFFFFF);
-		else if(ttl == 2)
+		else if(ttl == 4)
 			makeGraphic(FlxG.width, FlxG.height, 0x22FFFFFF);
-		else if(ttl == 1)
+		else if(ttl == 2)
 			makeGraphic(FlxG.width, FlxG.height, 0x11FFFFFF);
 		
 		ttl--;
