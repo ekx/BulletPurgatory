@@ -19,7 +19,7 @@ class Explosion extends FlxSprite
 	}
 
 	override public function reset(locX:Float, locY:Float):Void {
-		super.reset(locX - width / 1.5 - 10, locY - height / 2);
+		super.reset(locX - width / 2, locY - height / 2);
 
 		animation.play("explosion");
 		FlxG.sound.play("assets/sounds/explosion.wav", Reg.sfxVolume);
