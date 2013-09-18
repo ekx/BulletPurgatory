@@ -72,9 +72,11 @@ class PlayState extends FlxState
 	 */
 	override public function update():Void
 	{
+		/*
 		var temp:Int = FlxRandom.intRanged(0, 100);
 		if(temp == 100)
 			Reg.enemies.add(new SimpleEnemy());
+		*/
 
 		super.update();
 
