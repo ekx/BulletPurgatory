@@ -22,8 +22,10 @@ class PlayState extends FlxState
 		// Set a background color
 		FlxG.cameras.bgColor = 0xff131c1b;
 
-		Reg.space = new Space();
-		add(Reg.space);
+		//Reg.space = new Space();
+		//add(Reg.space);
+		
+		add(new Ground("forrest"));
 
 		Recycler.init();
 		add(Recycler.extraLives);

@@ -30,6 +30,10 @@ class Constants
 	public static inline var PLANETS_SPEED:Int = 20; 
 	public static inline var PLANETS_NUM:Int = 5;
 	
+	//Ground
+	public static inline var TILE_SIZE:Int = 16;
+	public static inline var GROUND_SPEED:Int = 200;
+	
 	//Recycler
 	public static inline var NUM_PLAYER_BULLETS:Int = 150;
 	public static inline var NUM_ENEMY_BULLETS:Int = 400;
