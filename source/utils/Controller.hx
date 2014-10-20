@@ -1,7 +1,7 @@
 package utils;
 
 import flixel.*;
-import flixel.system.input.gamepad.*;
+import flixel.input.gamepad.*;
 
 class Controller 
 {
@@ -54,7 +54,7 @@ class Controller
 	public function new()
 	{
 		if(FlxG.gamepads != null)
-			gamePad = FlxG.gamepads.get(0);
+			gamePad = FlxG.gamepads.firstActive;
 		else
 			gamePad = null;
 	}

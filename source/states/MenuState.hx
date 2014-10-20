@@ -28,6 +28,7 @@ class MenuState extends FlxState
 	 */
 	override public function create():Void
 	{
+		FlxG.mouse.visible = false;
 		Reg.controller = new Controller();
 		
 		// Set a background color
@@ -67,14 +68,14 @@ class MenuState extends FlxState
 	{
 		super.update();
 		
-		if(FlxG.keyboard.anyJustPressed(["UP", "W"]) || Reg.controller.justUpPressed()) {
+		if(FlxG.keys.anyJustPressed(["UP", "W"]) || Reg.controller.justUpPressed()) {
 			FlxG.sound.play("assets/sounds/select.wav", Reg.sfxVolume);
 			selection--;
 			
 			if(selection == -1)
 				selection = 2;
 		}
-		if(FlxG.keyboard.anyJustPressed(["DOWN", "S"]) || Reg.controller.justDownPressed()) {
+		if(FlxG.keys.anyJustPressed(["DOWN", "S"]) || Reg.controller.justDownPressed()) {
 			FlxG.sound.play("assets/sounds/select.wav", Reg.sfxVolume);
 			selection++;
 			
@@ -82,7 +83,7 @@ class MenuState extends FlxState
 				selection = 0;
 		}
 		
-		if(FlxG.keyboard.anyJustPressed(["SPACE", "ENTER"]) || Reg.controller.anyJustPressed([Controller.A, Controller.START])) {
+		if(FlxG.keys.anyJustPressed(["SPACE", "ENTER"]) || Reg.controller.anyJustPressed([Controller.A, Controller.START])) {
 			switch(selection) {
 				case 0:
 					onNewGame();

@@ -65,7 +65,7 @@ class OptionsState extends FlxState
 	{
 		super.update();
 		
-		if(FlxG.keyboard.anyJustPressed(["LEFT", "A"]) || Reg.controller.justLeftPressed()) {
+		if(FlxG.keys.anyJustPressed(["LEFT", "A"]) || Reg.controller.justLeftPressed()) {
 			switch(selection) {
 				case 0:
 					if(Reg.sfxVolume > 0.1) {
@@ -78,7 +78,7 @@ class OptionsState extends FlxState
 			}
 		}
 		
-		if(FlxG.keyboard.anyJustPressed(["RIGHT", "D"]) || Reg.controller.justRightPressed()) {
+		if(FlxG.keys.anyJustPressed(["RIGHT", "D"]) || Reg.controller.justRightPressed()) {
 			switch(selection) {
 				case 0:
 					if(Reg.sfxVolume < 1) {
@@ -91,14 +91,14 @@ class OptionsState extends FlxState
 			}
 		}
 		
-		if(FlxG.keyboard.anyJustPressed(["UP", "W"]) || Reg.controller.justUpPressed()) {
+		if(FlxG.keys.anyJustPressed(["UP", "W"]) || Reg.controller.justUpPressed()) {
 			FlxG.sound.play("assets/sounds/select.wav", Reg.sfxVolume);
 			selection--;
 			
 			if(selection == -1)
 				selection = 2;
 		}
-		if(FlxG.keyboard.anyJustPressed(["DOWN", "S"]) || Reg.controller.justDownPressed()) {
+		if(FlxG.keys.anyJustPressed(["DOWN", "S"]) || Reg.controller.justDownPressed()) {
 			FlxG.sound.play("assets/sounds/select.wav", Reg.sfxVolume);
 			selection++;
 			
@@ -106,7 +106,7 @@ class OptionsState extends FlxState
 				selection = 0;
 		}
 		
-		if(FlxG.keyboard.anyJustPressed(["SPACE", "ENTER"]) || Reg.controller.anyJustPressed([Controller.A, Controller.START])) {
+		if(FlxG.keys.anyJustPressed(["SPACE", "ENTER"]) || Reg.controller.anyJustPressed([Controller.A, Controller.START])) {
 			switch(selection) {
 				case 2:
 					onBack();

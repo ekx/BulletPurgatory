@@ -16,7 +16,7 @@ class PlayerShip extends FlxSprite
 	{		
 		super(FlxG.width / 2 - 16, FlxG.height - 50);
 
-		loadGraphic("assets/images/ship.png", true, false, 32, 48);
+		loadGraphic("assets/images/ship.png", false, 32, 48);
 		animation.add("idle", [0]);
 		animation.add("flight", [1, 2, 3], 8, true);
 
@@ -33,18 +33,18 @@ class PlayerShip extends FlxSprite
 		velocity.y = 0;
 
 		//Horizontal movement
-		if(FlxG.keyboard.pressed("LEFT", "A") || Reg.controller.leftPressed()) {
+		if(FlxG.keys.pressed.LEFT || FlxG.keys.pressed.A || Reg.controller.leftPressed()) {
 			velocity.x -= Constants.PLAYER_HORIZONTAL_SPEED;		
 		}
-		else if(FlxG.keyboard.pressed("RIGHT", "D") || Reg.controller.rightPressed()) {
+		else if(FlxG.keys.pressed.RIGHT || FlxG.keys.pressed.D || Reg.controller.rightPressed()) {
 			velocity.x += Constants.PLAYER_HORIZONTAL_SPEED;		
 		}
 
 		//Vertical movement
-		if(FlxG.keyboard.pressed("UP", "W") || Reg.controller.upPressed()) {
+		if(FlxG.keys.pressed.UP || FlxG.keys.pressed.W || Reg.controller.upPressed()) {
 			velocity.y -= Constants.PLAYER_VERTICAL_SPEED;		
 		}
-		else if(FlxG.keyboard.pressed("DOWN", "S") || Reg.controller.downPressed()) {
+		else if(FlxG.keys.pressed.DOWN || FlxG.keys.pressed.S || Reg.controller.downPressed()) {
 			velocity.y += Constants.PLAYER_VERTICAL_SPEED;		
 		}
 
@@ -65,7 +65,7 @@ class PlayerShip extends FlxSprite
 		}
 
 		//Shooting
-		if((FlxG.keyboard.pressed("SPACE") || Reg.controller.pressed(Controller.A)) && shotTimer == 0)
+		if((FlxG.keys.pressed.SPACE || Reg.controller.pressed(Controller.A)) && shotTimer == 0)
 		{
 			FlxG.sound.play("assets/sounds/shot.wav", Reg.sfxVolume);
 			shotTimer = Constants.PLAYER_SHOT_TIMEOUT;
@@ -99,7 +99,7 @@ class PlayerShip extends FlxSprite
 		}
 
 		//Bomb
-		if((FlxG.keyboard.pressed("ALT") || Reg.controller.pressed(Controller.X)) && bombTimer == 0 && Reg.bombs > 0) {
+		if((FlxG.keys.pressed.ALT || Reg.controller.pressed(Controller.X)) && bombTimer == 0 && Reg.bombs > 0) {
 			Reg.bombs--;
 			bombTimer = Constants.PLAYER_BOMB_TIMEOUT;
 

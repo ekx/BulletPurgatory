@@ -3,8 +3,11 @@
 	[
 		{
 			"follow_symlinks": true,
-			"name": "",
-			"path": "./"
+			"path": "."
+		},
+		{
+			"follow_symlinks": true,
+			"path": "source"
 		}
 	]
 }

@@ -12,7 +12,7 @@ class Planet extends FlxSprite
 	public function new() 
 	{
 		super(-100, -100);
-		loadGraphic("assets/images/planet.png", true, false, 128, 128);
+		loadGraphic("assets/images/planet.png", false, 128, 128);
 		animation.add("0", [0]);
 		animation.add("1", [1]);
 		animation.add("2", [2]);

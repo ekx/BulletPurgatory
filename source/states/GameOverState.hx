@@ -60,7 +60,7 @@ class GameOverState extends FlxState
 	{
 		super.update();
 		
-		if(FlxG.keyboard.justPressed("ENTER") || Reg.controller.justPressed(Controller.START)) {
+		if(FlxG.keys.justPressed.ENTER || Reg.controller.justPressed(Controller.START)) {
 			FlxG.switchState(new PlayState());
 		}
 

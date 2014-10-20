@@ -30,7 +30,7 @@ class HUD extends FlxGroup
 		if(Reg.lives <= 3) {
 			for(i in 0 ... Reg.lives) {
 				temp = new FlxSprite(32 * i, 0);
-				temp.loadGraphic("assets/images/ship.png", true, false, 32, 48);
+				temp.loadGraphic("assets/images/ship.png", false, 32, 48);
 				temp.animation.add("idle", [0]);
 				temp.animation.play("idle");
 				livesCounter.add(temp);
@@ -42,7 +42,7 @@ class HUD extends FlxGroup
 			livesCounter.add(temp2);
 
 			temp = new FlxSprite(45, 0);
-			temp.loadGraphic("assets/images/ship.png", true, false, 32, 48);
+			temp.loadGraphic("assets/images/ship.png", false, 32, 48);
 			temp.animation.add("idle", [0]);
 			temp.animation.play("idle");
 			livesCounter.add(temp);

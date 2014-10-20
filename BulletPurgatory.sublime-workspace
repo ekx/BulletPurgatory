@@ -43,16 +43,8 @@
 			"file": "Project.xml",
 			"settings":
 			{
-				"buffer_size": 2483,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "source/Explosion.hx",
-			"settings":
-			{
-				"buffer_size": 1136,
-				"line_ending": "Unix"
+				"buffer_size": 2491,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -102,8 +94,13 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/D/Documents/Git/bullet_purgatory"
+	],
 	"file_history":
 	[
+		"/D/Documents/Git/bullet_purgatory/source/Explosion.hx",
 		"/Users/Benny/Documents/Projects/TestShooter/Project.xml",
 		"/Users/Benny/Documents/Projects/TestShooter/source/Reg.hx",
 		"/Users/Benny/Documents/Projects/TestShooter/source/SimpleEnemy.hx",
@@ -169,7 +166,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -178,15 +175,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2483,
+						"buffer_size": 2491,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								155,
-								155
+								0,
+								0
 							]
 						],
 						"settings":
@@ -198,35 +195,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "source/Explosion.hx",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1136,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								159,
-								159
-							]
-						],
-						"settings":
-						{
-							"haxe-build-id": 0,
-							"syntax": "Packages/haxe-sublime-bundle/Haxe.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 97.0,
-						"zoom_level": 1.0
-					},
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -263,6 +232,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
 	"project": "BulletPurgatory.sublime-project",
 	"replace":
 	{
@@ -293,6 +266,7 @@
 		],
 		"width": 0.0
 	},
+	"selected_group": 0,
 	"settings":
 	{
 	},

@@ -21,14 +21,18 @@ class Ground extends FlxGroup
 		this.type = type;
 		
 		mapA = new FlxTilemap();
-		mapA.loadMap(FlxTilemap.arrayToCSV(generateMap(), Std.int(FlxG.width / Constants.TILE_SIZE)) , "assets/images/" + type + ".png", Constants.TILE_SIZE, Constants.TILE_SIZE, FlxTilemap.OFF);
+		mapA.widthInTiles = Std.int(FlxG.width / Constants.TILE_SIZE);
+		mapA.heightInTiles = Std.int(FlxG.height * 2 / Constants.TILE_SIZE);
+		mapA.loadMap(generateMap(), "assets/images/" + type + ".png", Constants.TILE_SIZE, Constants.TILE_SIZE, FlxTilemap.OFF);
 		mapA.y = -FlxG.height;
 		mapA.velocity.y = Constants.GROUND_SPEED;
 		mapA.moves = true;
 		add(mapA);
 
 		mapB = new FlxTilemap();
-		mapB.loadMap(FlxTilemap.arrayToCSV(generateMap(), Std.int(FlxG.width / Constants.TILE_SIZE)) , "assets/images/" + type + ".png", Constants.TILE_SIZE, Constants.TILE_SIZE, FlxTilemap.OFF);
+		mapB.widthInTiles = Std.int(FlxG.width / Constants.TILE_SIZE);
+		mapB.heightInTiles = Std.int(FlxG.height * 2 / Constants.TILE_SIZE);
+		mapB.loadMap(generateMap(), "assets/images/" + type + ".png", Constants.TILE_SIZE, Constants.TILE_SIZE, FlxTilemap.OFF);
 		mapB.y = -(FlxG.height * 3);
 		mapB.velocity.y = Constants.GROUND_SPEED;
 		mapB.moves = true;
@@ -39,7 +43,8 @@ class Ground extends FlxGroup
 		var map:Array<Int> = new Array<Int>();
 		
 		for(i in 0 ... Std.int((FlxG.height * 2) / Constants.TILE_SIZE * FlxG.width / Constants.TILE_SIZE)) {
-			map[i] = 0;
+			map[i] = 1;
+			//map[i] = FlxRandom.intRanged(0, 40);
 		}
 		
 		return map;
@@ -48,14 +53,18 @@ class Ground extends FlxGroup
 	override public function update():Void
 	{
 		super.update();
-		
+
 		if (mapA.y >= FlxG.height) {
-			mapA.loadMap(FlxTilemap.arrayToCSV(generateMap(), Std.int(FlxG.width / Constants.TILE_SIZE)) , "assets/images/" + type + ".png", Constants.TILE_SIZE, Constants.TILE_SIZE, FlxTilemap.OFF);
+			mapA.widthInTiles = Std.int(FlxG.width / Constants.TILE_SIZE);
+			mapA.heightInTiles = Std.int(FlxG.height * 2 / Constants.TILE_SIZE);
+			mapA.loadMap(generateMap(), "assets/images/" + type + ".png", Constants.TILE_SIZE, Constants.TILE_SIZE, FlxTilemap.OFF);
 			mapA.y = -(FlxG.height * 3);
 		}
 		
 		if (mapB.y >= FlxG.height) {
-			mapB.loadMap(FlxTilemap.arrayToCSV(generateMap(), Std.int(FlxG.width / Constants.TILE_SIZE)) , "assets/images/" + type + ".png", Constants.TILE_SIZE, Constants.TILE_SIZE, FlxTilemap.OFF);
+			mapB.widthInTiles = Std.int(FlxG.width / Constants.TILE_SIZE);
+			mapB.heightInTiles = Std.int(FlxG.height * 2 / Constants.TILE_SIZE);
+			mapB.loadMap(generateMap(), "assets/images/" + type + ".png", Constants.TILE_SIZE, Constants.TILE_SIZE, FlxTilemap.OFF);
 			mapB.y = -(FlxG.height * 3);
 		}
 	}
