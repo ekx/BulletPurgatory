@@ -11,7 +11,7 @@ class Reg
 	static public var bomb:Bomb;
 	static public var enemies:FlxGroup;
 	
-	static public var space:Space;
+	static public var background:FlxGroup;
 	static public var hud:HUD;
 
 	static public var score(get, set):Int;

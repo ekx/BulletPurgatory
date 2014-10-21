@@ -43,8 +43,20 @@ class Ground extends FlxGroup
 		var map:Array<Int> = new Array<Int>();
 		
 		for(i in 0 ... Std.int((FlxG.height * 2) / Constants.TILE_SIZE * FlxG.width / Constants.TILE_SIZE)) {
-			map[i] = 30;
-			//map[i] = FlxRandom.intRanged(0, 40);
+
+			var temp:Int = FlxRandom.intRanged(0, 2);
+			if(temp == 0)
+				map[i] = 30;
+			else
+				map[i] = 4;
+
+			temp = FlxRandom.intRanged(1, 40);
+			if(temp == 1)
+				map[i] = 20;
+			else if(temp == 2)
+				map[i] = 24;
+			else if(temp == 3)
+				map[i] = 25;
 		}
 		
 		return map;

@@ -22,12 +22,10 @@ class PlayState extends FlxState
 		// Set a background color
 		FlxG.cameras.bgColor = 0xff131c1b;
 
-		/*
-		Reg.space = new Space();
-		add(Reg.space);
-		*/
-
-		add(new Ground("forest"));
+		//Reg.background = new Space();
+		Reg.background = new Ground("forest");
+		//Reg.background = new Ground("desert");
+		add(Reg.background);
 
 		Recycler.init();
 		add(Recycler.extraLives);
@@ -54,7 +52,7 @@ class PlayState extends FlxState
 		Reg.lives = Constants.NUM_LIVES;
 		Reg.bombs = Constants.NUM_BOMBS;
 		
-		add(new Announcer("Wave 1"));
+		add(new Announcer("Level 1"));
 
 		//FlxG.debugger.visible = true;
 		//FlxG.debugger.drawDebug = true;
