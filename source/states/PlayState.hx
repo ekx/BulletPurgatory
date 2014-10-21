@@ -22,8 +22,8 @@ class PlayState extends FlxState
 		// Set a background color
 		FlxG.cameras.bgColor = 0xff131c1b;
 
-		//Reg.background = new Space();
-		Reg.background = new Ground("forest");
+		Reg.background = new Space();
+		//Reg.background = new Ground("forest");
 		//Reg.background = new Ground("desert");
 		add(Reg.background);
 
@@ -74,11 +74,9 @@ class PlayState extends FlxState
 	 */
 	override public function update():Void
 	{
-		/*
 		var temp:Int = FlxRandom.intRanged(0, 100);
 		if(temp == 100)
 			Reg.enemies.add(new SimpleEnemy());
-		*/
 
 		super.update();
 
